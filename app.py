@@ -47,7 +47,8 @@ def callback():
 def handle_message(event):
     with ApiClient(configuration) as api_client:
         line_bot_api = MessagingApi(api_client)
-        reply_text = event.message.text + " (reply token: " + event.reply_token + ")"
+        user_id = event.source.user_id
+        reply_text = event.message.text + " (reply token: " + event.reply_token + ")" + "ID_ " +event.sounce.user_id
         line_bot_api.reply_message_with_http_info(
             ReplyMessageRequest(
                 reply_token=event.reply_token,
